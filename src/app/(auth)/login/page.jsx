@@ -4,46 +4,75 @@ import Link from "next/link";
 import { Icon } from '@iconify/react';
 import Toggle from "../../components/Toggle";
 import { useContext, useEffect, useState } from "react";
-import useLoginReq from "../../components/loginApiRequest";
 import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
-// import { UserContext } from "@/context";
+import { UserContext } from "../../../context";
 
 export default function Home() {
-  const [email, setEmail] = useState(' ');
-  const [password, setPassword] = useState(' ');
-  // const [state, setState] = useContext(UserContext);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [state, setState] = useContext(UserContext);
 
   const router = useRouter();
 
-  const handleSubmite = async (e) => {
-    e.preventDefault();
-    console.log("test login start")
+  // const handleSubmite = async (e) => {
+  //   e.preventDefault();
+  //   console.log("test login start")
   
-    const {data}=await axios.post("http://localhost:4000/api/login",
-    {
-      password,
-      email,
-    })
-    console.log("login",data)
-    if (error) {
-      toast.error(error);
+  //   const {data}=await axios.post("http://localhost:4000/api/login",
+  //   {
+  //     password,
+  //     email,
+  //   })
+  //   console.log("login",data)
+  //   if (data.error) {
+  //     toast.error("",error);
 
-    } else if (data !== null) {
-      toast.success("Login Successfull");
-      setState({
-        user: data.user, // Assuming responseData.user contains the user object
-        token: data.token,
-      });
-      // save in local storage
-      // window.localStorage.setItem("auth", JSON.stringify(data));
-      window.localStorage.setItem("auth", JSON.stringify(state));
-      router.push("/")
-    }
-  }
+  //   } else {
+  //     toast.success("Login Successfull");
+  //     setState({
+  //       user: data.user, // Assuming responseData.user contains the user object
+  //       token: data.token,
+  //     });
+  //     // save in local storage
+  //     // window.localStorage.setItem("auth", JSON.stringify(data));
+  //     window.localStorage.setItem("auth", JSON.stringify(state));
+  //     router.push("/")
+  //   }
+  // }
   // if (state && state.token) router.push("/");
-
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("test login start");
+  
+    try {
+      const { data } = await axios.post("http://localhost:4000/api/login", {
+        password,
+        email,
+      });
+  
+      console.log("login", data);
+  
+      if (data.error) {
+        toast.error(data.error); // Change `error` to `data.error`
+      } else {
+        toast.success("Login Successful");
+        setState({
+          user: data.user,
+          token: data.token,
+        });
+        // Save user data in local storage
+        window.localStorage.setItem("auth", JSON.stringify(data));
+        router.push("/");
+      }
+    } catch (error) {
+      // Handle error in case of network issues or server errors
+      console.error("Error occurred during login:", error);
+      toast.error("An error occurred. Please try again later.");
+    }
+  };
+  
   useEffect(() => {
     // Check if state and state.token are not null
     if (state && state.token) {
@@ -93,7 +122,7 @@ export default function Home() {
                   OR SIGN IN WITH EMAIL
                 </p>
                 <div className="flex flex-col justify-center items-center px-4">
-                  <form onSubmit={handleSubmite} className="flex flex-col justify-center items-center px-4">
+                  <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center px-4">
                     <ToastContainer />
                     <div className="w-full">
 
