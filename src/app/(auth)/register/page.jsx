@@ -26,7 +26,7 @@ export default function Home() {
   const handleSubmite = async (e) => {
     e.preventDefault();
     const country = selectedCountry;
-    const { data } =await axios.post("http://localhost:4000/api/register",
+    const { data } =await axios.post("http://45.77.247.238:4000/api/register",
       {
         name,
         password,

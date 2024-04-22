@@ -16,44 +16,16 @@ export default function Home() {
 
   const router = useRouter();
 
-  // const handleSubmite = async (e) => {
-  //   e.preventDefault();
-  //   console.log("test login start")
-  
-  //   const {data}=await axios.post("http://localhost:4000/api/login",
-  //   {
-  //     password,
-  //     email,
-  //   })
-  //   console.log("login",data)
-  //   if (data.error) {
-  //     toast.error("",error);
 
-  //   } else {
-  //     toast.success("Login Successfull");
-  //     setState({
-  //       user: data.user, // Assuming responseData.user contains the user object
-  //       token: data.token,
-  //     });
-  //     // save in local storage
-  //     // window.localStorage.setItem("auth", JSON.stringify(data));
-  //     window.localStorage.setItem("auth", JSON.stringify(state));
-  //     router.push("/")
-  //   }
-  // }
-  // if (state && state.token) router.push("/");
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("test login start");
-  
+    // console.log("test login start");
     try {
-      const { data } = await axios.post("http://localhost:4000/api/login", {
+      const { data } = await axios.post("http://45.77.247.238:4000/api/login", {
         password,
         email,
       });
-  
-      console.log("login", data);
-  
+      // console.log("login", data);
       if (data.error) {
         toast.error(data.error); // Change `error` to `data.error`
       } else {
