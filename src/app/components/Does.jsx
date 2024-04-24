@@ -1,6 +1,7 @@
 
 import Image from 'next/image';
 const Does= ({ sub, title, items }) => {
+  console.log(items)
   return (
     <div className="max-w-screen-xl mx-auto md:px-10 px-2 my-16">
       <h2 className="md:text-lg text-sm text-center font-semibold text-blue-700 mb-4">
@@ -12,15 +13,20 @@ const Does= ({ sub, title, items }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {items.map((item, index) => (
           <div key={index} className="bg-white p-4">
-            <Image
+            
+
+
+{item.image ?(
+  <Image
                 width={400}
                 height={400}
-                src={item.img}
+                src={item.img.url}
                 alt={item.title}
                 className="mb-4 w-full max-h-52"
             />
+             ): null}
             <h4 className="text-lg font-bold mb-2">{item.title}</h4>
-            <p className="text-gray-600">{item.sub}</p>
+            <p className="text-gray-600">{item.subtitle1}{item.subtitle2}</p>
           </div>
         ))}
       </div>
