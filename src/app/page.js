@@ -13,17 +13,79 @@ import Partner from './components/Partner';
 import Questions from './components/Questions';
 import UserInfo from './components/UserInfo';
 import Image from "next/image";
+import axios from "axios"
+import { useEffect, useState } from 'react';
 export default function Home() {
+  const [toph, setToph] = useState([]);
+  const [work,setWork]=useState([]);
+  const [subdata, setSubdata] = useState(null); // Initialize subdata state
+  const [wtitle,setwtitle]=useState(null);
+
+  useEffect(() => {
+        fetchTopCard();
+        fetchWork();
+    }, [toph,work]);
+
+    const fetchTopCard = async () => {
+        try {
+            const response = await axios.get("/get-top");
+            setToph(response.data.top);
+            // console.log("data users", response.data.top);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    const fetchWork = async () => {
+        try {
+          const response = await axios.get("/get-work-top");
+            const title=response.data.work[0].title
+            const sub = response.data.work[0].subtitle + response.data.work[0].subtitle1;
+            setwtitle(title)
+            setSubdata(sub);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    const fetchWorkCard = async () => {
+        try {
+          const response = await axios.get("/get-work-card");
+            
+            setwtitle(title)
+            setSubdata(sub);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    // get-work-card
   return (
     <>
       <Header />
       
       <Scroll />
-      <Hero />
+      {toph && (
+                    <div>
+                        {toph.map(item => (
+                            <div key={item._id}>
+                            <Hero  data={item}/>
+
+                            </div>
+                        ))}
+                    </div>
+                )}
       {/* <UserInfo /> */}
+      {work && (
+                    <div>
+                        {work.map(item => (
+                            <div key={item._id}>
+                            <Hero  data={item}/>
+
+                            </div>
+                        ))}
+                    </div>
+                )}
       <Does
-        sub="HOW DOES ARTIFICIAL INTELLIGENCE WORK?"
-        title="Tell the artificial intelligence what you want to write about and it will write it"
+        sub={subdata}
+        title={wtitle}
         items={[
           {
             img: "/does/1.png",
