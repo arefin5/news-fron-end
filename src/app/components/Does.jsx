@@ -21,7 +21,8 @@ const Does= ({ sub, title, items }) => {
                 width={400}
                 height={400}
                 src={item.img.url}
-                alt={item.title}
+                alt="nk"
+    loading="lazy"
                 className="mb-4 w-full max-h-52"
             />
              ): null}
