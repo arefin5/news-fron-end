@@ -19,13 +19,17 @@ import Loading from './loading';
 export default function Home() {
   const [toph, setToph] = useState([]);
   const [work, setWork] = useState([]);
-  const [subdata, setSubdata] = useState(null); // Initialize subdata state
-  const [wtitle, setwtitle] = useState(null);
+  const [subdata, setSubdata] = useState(""); // Initialize subdata state
+  const [wtitle, setwtitle] = useState("");
+  const [subfeatcher, setfeatchertitle] = useState(""); // Initialize subdata state
+  const [titlef, settitlefeatcher] = useState("");
+  
 
   useEffect(() => {
     fetchTopCard();
     fetchWork();
     fetchWorkCard();
+    fetchFeatcher();
   }, [toph, work]);
 
   const fetchTopCard = async () => {
@@ -34,7 +38,7 @@ export default function Home() {
       setToph(response.data.top);
       // console.log("data users", response.data.top);
     } catch (err) {
-      console.error(err);
+      console.log(err);
     }
   };
   const fetchWork = async () => {
@@ -44,8 +48,9 @@ export default function Home() {
       const sub = response.data.work[0].subtitle + response.data.work[0].subtitle1;
       setwtitle(title)
       setSubdata(sub);
+      // console.log(title,sub);
     } catch (err) {
-      console.error(err);
+      console.log(err);
     }
   };
   const fetchWorkCard = async () => {
@@ -54,11 +59,23 @@ export default function Home() {
       setWork(response.data.workcard)
 
     } catch (err) {
-      console.error(err);
+      console.log(err);
     }
   };
 
-
+// get-featcher-top
+const fetchFeatcher = async () => {
+    try {
+      const response = await axios.get("/get-featcher-top");
+      const title = await response.data.featcher[0].title
+      const sub =await  response.data.featcher[0].subtitle;
+      setfeatchertitle(title);
+      
+      settitlefeatcher(sub);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <>
       <Header />
@@ -89,8 +106,8 @@ export default function Home() {
       </>
       </Suspense>
       <Tabs
-        sub="FEATURES OVERVIEW"
-        title="What can artificial intelligence do?"
+        sub={subfeatcher}
+        title={titlef}
         items={[
           {
             title: <h1>Creation of content</h1>,

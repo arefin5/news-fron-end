@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 const Hero = ({ data }) => {
-  console.log(data.image.url)
+  // console.log(data.image.url)
   const words = [
     'ze slov umění,',
     'z obrázků příběh,',

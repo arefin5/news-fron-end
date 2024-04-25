@@ -5,6 +5,7 @@ import { Icon } from '@iconify/react';
 
 
 const Tabs = ({ sub, title, items }) => {
+  console.log(sub,title)
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTabClick = (index) => {
@@ -30,7 +31,11 @@ const Tabs = ({ sub, title, items }) => {
             onClick={() => handleTabClick(index)}
           >
             <div className='md:flex inline-flex items-center p-2 hover:text-blue-700 font-bold text-gray-700'>
-                {item.icon && <>{item.icon}</>}
+            <Icon
+              icon="material-symbols:bolt"
+              className='mr-2'
+              fontSize={25}
+            />,
                 {item.title}
             </div>
             
