@@ -1,7 +1,7 @@
 
 import Image from 'next/image';
 const Does= ({ sub, title, items }) => {
-  console.log(items)
+  // console.log(items)
   return (
     <div className="max-w-screen-xl mx-auto md:px-10 px-2 my-16">
       <h2 className="md:text-lg text-sm text-center font-semibold text-blue-700 mb-4">
@@ -20,9 +20,9 @@ const Does= ({ sub, title, items }) => {
   <Image
                 width={400}
                 height={400}
-                src={item.img.url}
-                alt="nk"
-    loading="lazy"
+                src={item.image.url}
+
+                alt={item.title}
                 className="mb-4 w-full max-h-52"
             />
              ): null}

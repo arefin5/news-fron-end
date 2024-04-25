@@ -14,7 +14,8 @@ import Questions from './components/Questions';
 import UserInfo from './components/UserInfo';
 import Image from "next/image";
 import axios from "axios"
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
+import Loading from './loading';
 export default function Home() {
   const [toph, setToph] = useState([]);
   const [work, setWork] = useState([]);
@@ -63,6 +64,7 @@ export default function Home() {
       <Header />
 
       <Scroll />
+      <Suspense fallback={<Loading/>}>
       {toph && (
         <div>
           {toph.map(item => (
@@ -73,8 +75,6 @@ export default function Home() {
           ))}
         </div>
       )}
-      {/* <UserInfo /> */}
-
       <>
       {
         work ?
@@ -87,6 +87,7 @@ export default function Home() {
           ):null
      }
       </>
+      </Suspense>
       <Tabs
         sub="FEATURES OVERVIEW"
         title="What can artificial intelligence do?"

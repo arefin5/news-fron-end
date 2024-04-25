@@ -5,7 +5,7 @@ import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 const Hero = ({ data }) => {
-  // console.log(data)
+  console.log(data.image.url)
   const words = [
     'ze slov umění,',
     'z obrázků příběh,',
@@ -65,7 +65,7 @@ const Hero = ({ data }) => {
         <div className="max-w-screen-xl relative mx-auto md:px-10 px-2 pb-20 pt-24">
           <div className="flex items-center flex-wrap md:flex-row-reverse">
             <div className="w-full md:w-2/4 p-6 pt-0">
-             {data.image ?(
+             {data.image && data.image.url?(
               <Image
                 src={data.image.url}
                 width={600}
