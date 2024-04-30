@@ -5,12 +5,332 @@ import { ChakraProvider, Icon } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
 
 const Content = () => {
-    const [selectedCountry, setSelectedCountry] = useState('Czech Republic');
+  const [selectedCountry, setSelectedCountry] = useState('Czech Republic');
 
   const [openIndex, setOpenIndex] = useState(-1);
   const [openIndext, setOpenIndext] = useState(-1);
   const [openIndexth, setOpenIndexth] = useState(-1);
   const [category, setCategory] = useState('title');
+  const [openIndexLang, setOpenIndexLang] = useState(-1); // Add state for language list
+
+
+  const languages = [
+    "English",
+    "Spanish",
+    "French",
+    "Chinese (Mandarin)",
+    "Hindi",
+    "Arabic",
+    "Bengali",
+    "Russian",
+    "Portuguese",
+    "Urdu",
+    "Indonesian",
+    "German",
+    "Japanese",
+    "Swahili",
+    "Italian",
+    "Turkish",
+    "Korean",
+    "Vietnamese",
+    "Tamil",
+    "Telugu",
+    "Marathi",
+    "Thai",
+    "Persian (Farsi)",
+    "Filipino (Tagalog)",
+    "Polish",
+    "Dutch",
+    "Yoruba",
+    "Ukrainian",
+    "Malay",
+    "Romanian",
+    "Kurdish",
+    "Sinhala",
+    "Amharic",
+    "Finnish",
+    "Hungarian",
+    "Czech",
+    "Greek",
+    "Swedish",
+    "Bulgarian",
+    "Danish",
+    "Slovak",
+    "Norwegian",
+    "Lithuanian",
+    "Latvian",
+    "Estonian",
+    "Slovenian",
+    "Croatian",
+    "Serbian",
+    "Bosnian",
+    "Macedonian",
+    "Albanian",
+    "Icelandic",
+    "Irish",
+    "Welsh",
+    "Gaelic (Scottish)",
+    "Hawaiian",
+    "Maori",
+    "Fijian",
+    "Tahitian",
+    "Samoan",
+    "Guarani",
+    "Quechua",
+    "Aymara",
+    "Mapudungun",
+    "Nahuatl",
+    "Mayan languages",
+    "Haitian Creole",
+    "Frisian",
+    "Luxembourgish",
+    "Maltese",
+    "Greenlandic",
+    "Inuktitut",
+    "Cherokee",
+    "Navajo",
+    "Hopi",
+    "Innu-aimun",
+    "Cree",
+    "Mohawk",
+    "Ojibwe",
+    "Wolof",
+    "Zulu",
+    "Xhosa",
+    "Sesotho",
+    "Tswana",
+    "Somali",
+    "Kinyarwanda",
+    "Chichewa",
+    "Tigrinya",
+    "Akan",
+    "Ganda",
+    "Susu",
+    "Lingala",
+    "Kirundi",
+    "Kikuyu",
+    "Oromo",
+    "Tigrinya",
+    "Gujarati",
+    "Malayalam",
+    "Punjabi",
+    "Kannada",
+    "Assamese",
+    "Oriya",
+    "Gujarati",
+    "Konkani",
+    "Manipuri",
+    "Sanskrit",
+    "Nepali",
+    "Sindhi",
+    "Assamese",
+    "Dari",
+    "Pashto",
+    "Balochi",
+    "Sindhi",
+    "Fijian Hindi",
+    "Fijian Punjabi",
+    "Fijian Tamil",
+    "Palauan",
+    "Marshallese",
+    "Kiribati",
+    "Nauruan",
+    "Tok Pisin",
+    "Hiri Motu",
+    "Pijin",
+    "Bislama",
+    "Solomon Islands Pijin",
+    "Samoan",
+    "Cook Islands Māori",
+    "Tongan",
+    "Niuean",
+    "Tuvaluan",
+    "Tokelauan",
+    "Māori",
+    "Rapa Nui",
+    "Rarotongan",
+    "Rotuman",
+    "Nukuoro",
+    "Nukumanu",
+    "Takuu",
+    "Mortlockese",
+    "Kapingamarangi",
+    "Nukuoro",
+    "Nukumanu",
+    "Takuu",
+    "Mortlockese",
+    "Kapingamarangi",
+    "Pohnpeian",
+    "Kosraean",
+    "Chuukese",
+    "Yapese",
+    "Marshallese",
+    "Kwajalein",
+    "Maloelap",
+    "Woleaian",
+    "Pingelapese",
+    "Satawalese",
+    "Mokilese",
+    "Ulithian",
+    "Woleaian",
+    "Pingelapese",
+    "Satawalese",
+    "Mokilese",
+    "Ulithian",
+    "Hawaiian",
+    "Samoan",
+    "Tahitian",
+    "Tongan",
+    "Māori",
+    "Rapa Nui",
+    "Cook Islands Māori",
+    "Rarotongan",
+    "Niuean",
+    "Tokelauan",
+    "Tuvaluan",
+    "Marshallese",
+    "Kwajalein",
+    "Maloelap",
+    "Woleaian",
+    "Pingelapese",
+    "Satawalese",
+    "Mokilese",
+    "Ulithian",
+    "Woleaian",
+    "Pingelapese",
+    "Satawalese",
+    "Mokilese",
+    "Ulithian",
+    "Samoan",
+    "Futunan",
+    "Wallisian",
+    "Rapa",
+    "Rennellese",
+    "Nengone",
+    "Drehu",
+    "Ajië",
+    "Tjwao",
+    "Lifou",
+    "Hmong",
+    "Mien",
+    "Karen",
+    "Chin",
+    "Mizo",
+    "Khasi",
+    "Garo",
+    "Pangasinan",
+    "Ibanag",
+    "Tausug",
+    "Surigaonon",
+    "Waray-Waray",
+    "Kapampangan",
+    "Pangasinan",
+    "Ibanag",
+    "Tausug",
+    "Surigaonon",
+    "Waray-Waray",
+    "Kapampangan",
+    "Pangasinan",
+    "Ibanag",
+    "Tausug",
+    "Surigaonon",
+    "Waray-Waray",
+    "Kapampangan",
+    "Pangasinan",
+    "Ibanag",
+    "Tausug",
+    "Surigaonon",
+    "Waray-Waray",
+    "Kapampangan",
+    "Pangasinan",
+    "Ibanag",
+    "Tausug",
+    "Surigaonon",
+    "Waray-Waray",
+    "Kapampangan",
+    "Ilocano",
+    "Tboli",
+    "Ivatan",
+    "Kankanaey",
+    "Yakan",
+    "Aklanon",
+    "Hiligaynon",
+    "Ilonggo",
+    "Bikol",
+    "Tausug",
+    "Maguindanao",
+    "Maranao",
+    "Manobo",
+    "Tagalog",
+    "Cebuano",
+    "Visayan",
+    "Bisaya",
+    "Dagatnon",
+    "Karay-a",
+    "Capiznon",
+    "Kinaray-a",
+    "Surigaonon",
+    "Waray-Waray",
+    "Cuyonon",
+    "Chavacano",
+    "Yakan",
+    "Maguindanao",
+    "Maranao",
+    "Tausug",
+    "Chamorro",
+    "Carolinian",
+    "Belauan",
+    "Marshallese",
+    "Kosraean",
+    "Chuukese",
+    "Yapese",
+    "Palauan",
+    "Marshallese",
+    "Kosraean",
+    "Chuukese",
+    "Yapese",
+    "Palauan",
+    "Marshallese",
+    "Kosraean",
+    "Chuukese",
+    "Yapese",
+    "Palauan",
+    "Marshallese",
+    "Kosraean",
+    "Chuukese",
+    "Yapese",
+    "Palauan",
+    "Marshallese",
+    "Kosraean",
+    "Chuukese",
+    "Yapese",
+    "Palauan",
+    "Marshallese",
+    "Kosraean",
+    "Chuukese",
+    "Yapese",
+    "Palauan",
+    "Marshallese",
+    "Kosraean",
+    "Chuukese",
+    "Yapese",
+    "Palauan",
+    "Marshallese",
+    "Kosraean",
+    "Chuukese",
+    "Yapese",
+    "Palauan",
+    "Marshallese",
+    "Kosraean",
+    "Chuukese",
+    "Yapese",
+    "Palauan",
+    "Marshallese",
+    "Kosraean",
+    "Chuukese",
+    "Yapese",
+    "Palauan",
+  ];
 
 
   const countries = [
@@ -23,16 +343,12 @@ const Content = () => {
   const handleToggle = (index) => {
     setOpenIndex((prevIndex) => (prevIndex === index ? -1 : index));
   };
+  const handleToggleLang = (e) => {
+    setOpenIndexLang(e.target.value);
 
-  const handleTogglet = (index) => {
-    setOpenIndext((prevIndex) => (prevIndex === index ? -1 : index));
-  };
-  const handleToggleth = (index) => {
-    setOpenIndexth((prevIndex) => (prevIndex === index ? -1 : index));
   };
 
   const handleCategoryChange = (event) => {
-    // setCategory(event.target.value);
     const selectedCategory = event.target.value;
     setCategory(selectedCategory);
     console.log(selectedCategory);
@@ -42,7 +358,6 @@ const Content = () => {
     <div>
       <div className="max-w-3xl mx-auto md:py-20 px-10">
         <div className="mb-6">
-          {/*  */}
           <div className='bg-white'>
             <div
               className={`flex justify-between items-center cursor-pointer p-3 font-light ${openIndex === 0 ? 'bg-min/10 shadow-md' : 'border-y'
@@ -82,146 +397,37 @@ const Content = () => {
                       ))}
                     </select>
                   </div>
-
-
-
-
                   <p>Each option provides a different way to generate content.
                   </p>
                 </div>
 
-                {category === "title" && (
-                  <>
-                    <label for="review">Titles (1 per line)</label>
-                    <textarea name="title" className="w-100" placeholder="How to Bake Bread">
-                    </textarea>
-                    <p>We'll generate an article for each title.</p>
-                  </>
-
-                )}
-                {/*  */}
-                {category === "keyword" && (
-                  <>
-                    <label for="review">Titles (1 per line)</label>
-                    <textarea name="keyword" className="w-100" placeholder="How to Bake Bread">
-                    </textarea>
-                    <p>We'll generate an article for each title.</p>
-                  </>
-                )}
-                {/*  */}
-                {category === "description" && (
-                  <>
-                    <label for="review">Context Description</label>
-                    <textarea name="description"
-                      className="w-100"
-                      placeholder="SpeceX is a company that produce                     rockets">
-                    </textarea>
-                    <p>We'll generate an article for each keyword.
-                    </p>
-                  </>
-                )}
-                {/*  */}
-                {category === "montor" && (
-                  <>
-
-
-                    <p><strong>Monitor</strong></p>
-                    <button type="button" class="chakra-button css-1csoi55">+ Create Monitor</button>
-                    <br />
-                    <br />
-
-                    <select>
-                      <optgroup >
-                        <option value="montorselect">Select a Monitor</option>
-                      </optgroup>
-                    </select>
-                    <p>We'll use this monitor to extract relevant keywords.</p>
-
-
-                    <label className="form-label">Generation Mode</label>
+{/*  */}
+  <div className="mb-1">
+                  <label className="form-label"><b>Target Country
+</b> </label>
+                  <div className="w-full">
+                   
                     <select
-
-                      className="form-select"
+                      className="border rounded-md py-3 px-4 bg-slate-50 w-full my-4 focus:outline-blue-500"
+                      value={openIndexLang}
+                      onChange={handleToggleLang}
                     >
-
-                      <optgroup >
-                        <option value="top1">Top1</option>
-                        <option value="top3">Top3</option>
-                        <option value="top5">Top5</option>
-                        <option value="top10">Top10</option>
-                        <option value="top20">Top20</option>
-                        <option value="top50">Top50</option>
-                        <option value="top100">Top100</option>
-                      </optgroup>
+                    {languages.map((language, index) => (
+                        <option key={index} value={language}>
+                          {language}
+                        </option>
+                      ))}
                     </select>
-                    <p>We'll generate an article for each of the top keywords in the monitor.</p>
-                  </>
+                  </div>
+                  <p>Each option provides a different way to generate content.
+                  </p>
+                </div>
 
+{/*  */}
 
-
-
-                )
-
-                }
-                {/*  */}
               </>
             )}
           </div>
-          {/*  */}
-          <div className='bg-white'>
-            <div
-              className={`flex justify-between items-center cursor-pointer p-3 font-light ${openIndext === 1 ? 'bg-min/10 shadow-md' : 'border-y'
-                }`}
-              onClick={() => handleTogglet(1)} // Change the index to 1
-            >
-              <h4 className="text-base">FAQ 2</h4> {/* Correct the label to FAQ 2 */}
-              <svg
-                className={`w-4 h-4 transition-transform transform ${openIndext === 1 ? 'rotate-180' : 'rotate-0'
-                  }`}
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 1024 1024"
-              >
-                <path fill="currentColor"
-                  d="M831.872 340.864L512 652.672L192.128 340.864a30.592 30.592 0 0 0-42.752 0a29.12 29.12 0 0 0 0 41.6L489.664 714.24a32 32 0 0 0 44.672 0l340.288-331.712a29.12 29.12 0 0 0 0-41.728a30.592 30.592 0 0 0-42.752 0z" />
-              </svg>
-            </div>
-            {openIndext === 1 && (
-              <input
-                type="text"
-                className="text-gray-700 p-2 m-2 border border-gray-300 rounded-md"
-                placeholder="Enter text"
-              />
-            )}
-          </div>
-          {/*  */}
-          <div className='bg-white'>
-            <div
-              className={`flex justify-between items-center cursor-pointer p-3 font-light ${openIndexth === 2 ? 'bg-min/10 shadow-md' : 'border-y'
-                }`}
-              onClick={() => handleToggleth(2)} // Change the index to 1
-            >
-              <h4 className="text-base">FAQ 3</h4> {/* Correct the label to FAQ 2 */}
-              <svg
-                className={`w-4 h-4 transition-transform transform ${openIndexth === 2 ? 'rotate-180' : 'rotate-0'
-                  }`}
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 1024 1024"
-              >
-                <path fill="currentColor"
-                  d="M831.872 340.864L512 652.672L192.128 340.864a30.592 30.592 0 0 0-42.752 0a29.12 29.12 0 0 0 0 41.6L489.664 714.24a32 32 0 0 0 44.672 0l340.288-331.712a29.12 29.12 0 0 0 0-41.728a30.592 30.592 0 0 0-42.752 0z" />
-              </svg>
-            </div>
-            {openIndexth === 2 && (
-              <input
-                type="text"
-                className="text-gray-700 p-2 m-2 border border-gray-300 rounded-md"
-                placeholder="Enter text"
-              />
-            )}
-          </div>
-          {/*  */}
-
-          {/*  */}
         </div>
       </div>
     </div>
