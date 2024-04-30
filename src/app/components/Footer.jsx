@@ -3,7 +3,6 @@ import Image from 'next/image';
 import { Icon } from '@iconify/react';
 import Link from 'next/link';
 import FooterTabs from './FooterTabs';
-
 const Footer = () => {
 
   return (

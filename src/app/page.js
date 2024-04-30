@@ -14,7 +14,7 @@ import Questions from './components/Questions';
 import UserInfo from './components/UserInfo';
 import Image from "next/image";
 import axios from "axios"
-import { Suspense, useEffect, useState } from 'react';
+import {  Suspense, useEffect, useState } from 'react';
 import Loading from './loading';
 export default function Home() {
   const [toph, setToph] = useState([]);
@@ -23,13 +23,14 @@ export default function Home() {
   const [wtitle, setwtitle] = useState("");
   const [subfeatcher, setfeatchertitle] = useState(""); // Initialize subdata state
   const [titlef, settitlefeatcher] = useState("");
-  
+  const [fcard,setfeatchercWork]=useState([])
 
   useEffect(() => {
     fetchTopCard();
     fetchWork();
     fetchWorkCard();
     fetchFeatcher();
+    fetchCard();
   }, [toph, work]);
 
   const fetchTopCard = async () => {
@@ -76,10 +77,19 @@ const fetchFeatcher = async () => {
       console.log(err);
     }
   };
+  // /get-featcher-card
+  const fetchCard = async () => {
+    try {
+      const response = await axios.get("get-featcher-card");
+      setfeatchercWork(response.data.workcard)
+
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <>
       <Header />
-
       <Scroll />
       <Suspense fallback={<Loading/>}>
       {toph && (
@@ -87,35 +97,33 @@ const fetchFeatcher = async () => {
           {toph.map(item => (
             <div key={item._id}>
               <Hero data={item} />
-
             </div>
           ))}
         </div>
       )}
+      </Suspense>
       <>
       {
         work ?
           (
+            <Suspense  fallback={<p>Loading feed...</p>}>
             <Does
               sub={subdata}
               title={wtitle}
               items={work}
             />
+                  </Suspense>
+
           ):null
      }
       </>
-      </Suspense>
       <Tabs
         sub={subfeatcher}
         title={titlef}
         items={[
           {
             title: <h1>Creation of content</h1>,
-            icon: <Icon
-              icon="material-symbols:bolt"
-              className='mr-2'
-              fontSize={25}
-            />,
+           
             content:
               <>
                 <div className='flex flex-col md:flex-row-reverse items-center w-full'>

@@ -6,11 +6,14 @@ import Header from "../..//components/Header";
 import Image from "next/image";
 import Link from "next/link";
 import Scroll from '../../components/Scroll';
+import GoogleImages from '@/app/components/GoogleImages';
+import YouTubeSearch from '@/app/components/YouTubeSearch ';
 
 export default function Home() {
     return (
       <>
         <Header />
+        
         <Scroll />
         <div className="relative bg-[#1b1b3b] overflow-hidden">
             <div className="absolute md:block hidden bg-no-repeat bg-center bg-contain -top-2/4 -left-1/4 w-[800px] h-[800px] bg-[url('/bg/blur-n.png')]"></div>
@@ -86,6 +89,9 @@ export default function Home() {
             </ol>
           </div>
         </div>
+
+        <GoogleImages />
+        <YouTubeSearch/>
         <Footer />
       </>
   );
