@@ -62,3 +62,38 @@
   background-color: #6F2EFF;
   padding: 0px 9px;
 }
+textarea{
+  border-width: 1px;
+    border-style: solid;
+    border-image: initial;
+    border-color: inherit;
+    background: var(--chakra-colors-white);
+
+}
+.css-1csoi55 {
+  display: inline-flex;
+  appearance: none;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  user-select: none;
+  position: relative;
+  white-space: nowrap;
+  vertical-align: middle;
+  outline: transparent solid 2px;
+  outline-offset: 2px;
+  line-height: 1.2;
+  border-radius: var(--chakra-radii-md);
+  font-weight: var(--chakra-fontWeights-semibold);
+  transition-property: var(--chakra-transition-property-common);
+  transition-duration: var(--chakra-transition-duration-normal);
+  height: var(--chakra-sizes-6);
+  min-width: var(--chakra-sizes-6);
+  font-size: var(--chakra-fontSizes-xs);
+  padding-inline-start: var(--chakra-space-2);
+  padding-inline-end: var(--chakra-space-2);
+  border: 1px solid currentcolor;
+  color: var(--chakra-colors-purple-600);
+  background: var(--chakra-colors-transparent);
+}
