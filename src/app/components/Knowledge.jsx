@@ -22,11 +22,11 @@ const Knowledge = () => {
         <div className='bg-white'>
             <div
                 className=
-                {`flex justify-between items-center cursor-pointer p-3 font-light ${openIndex === 1 ? 'bg-min/10 shadow-md' : 'border-y'
+                {`flex justify-between items-center cursor-pointer  font-light ${openIndex === 1 ? 'bg-min/10 shadow-md' : 'border-y'
                     }`}
                 onClick={() => handleToggle(1)} // Change the index to 1
             >
-                <h4 className="text-base">Knowledge</h4> {/* Correct the label to FAQ 2 */}
+                <h4 className="text-base"><span className="bg-sl"></span>Knowledge</h4> {/* Correct the label to FAQ 2 */}
                 <ChakraProvider>
                     <Icon
                         as={CheckCircleIcon}
@@ -45,12 +45,14 @@ const Knowledge = () => {
                             on="Enabled"
                             off="Disabled"
                         />
-                        <span className="text-xs">
+                     
+
+                    </div>
+                  
+                    <span className="text-xs">
                             We'll search on Google for similar topics to generate up-to-date content.
 
                         </span>
-
-                    </div>
                     <div class="chakra-stack css-1igwmid"><p class="chakra-text css-1rr4qq7">Knowledge Base</p><a href="/dashboard/customization/knowledge/create">
                         <button type="button" class="chakra-button css-1csoi55">+ Create Knowledge Base</button></a></div>
                     {/*  */}

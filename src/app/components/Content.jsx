@@ -367,13 +367,13 @@ const Content = () => {
         <div >
           <div className='bg-white'>
             <div
-              className={`flex justify-between items-center cursor-pointer p-3 font-light ${openIndex === 0 ? 'bg-min/10 shadow-md' : 'border-y'
+              className={`flex justify-between items-center cursor-pointer font-light ${openIndex === 0 ? 'bg-min/10 shadow-md' : 'border-y'
                 }`}
               onClick={() => handleToggle(0)}
             >
               <h4 className="text-base">
-                <span className="bg-s"></span>
-                Base </h4>
+                <span className="bg-sl"></span>
+                Content </h4>
               <ChakraProvider>
                 <Icon
                   as={CheckCircleIcon}
@@ -389,9 +389,9 @@ const Content = () => {
                 <div className="mb-3">
                   <label className="form-label">Generation Mode</label>
                   <div className="w-full">
-                    <h1>
-                      Country
-                    </h1>
+                      
+                      
+                  <label className="form-label">Country</label>
                     <select
                       className="border rounded-md py-3 px-4 bg-slate-50 w-full my-4 focus:outline-blue-500"
                       value={selectedCountry}
