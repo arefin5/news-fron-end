@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 
 
-const Toggle = ({ label }) => {
+const ToggleD = ({ label,on,off  }) => {
   const [isActive, setIsActive] = useState(false);
 
   const toggleHandler = () => {
@@ -25,9 +25,9 @@ const Toggle = ({ label }) => {
           />
         </div>
       </label>
-      <span className="ml-2">{isActive ? 'on' : 'off'}</span>
+      <span className="ml-2">{isActive ? on : off}</span>
     </div>
   );
 };
 
-export default Toggle;
+export default ToggleD;

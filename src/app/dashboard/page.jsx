@@ -26,7 +26,6 @@ const Page = () => {
                 </div>
             </div>
             <Base />
-            <Content/>
         </>
     );
 }

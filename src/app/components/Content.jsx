@@ -3,7 +3,9 @@
 import { useState } from "react";
 import { ChakraProvider, Icon } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
-
+import PointOfview from "./PointOfview";
+import Instraction from "./Instraction";
+import Keyword from "./Keyword"
 const Content = () => {
   const [selectedCountry, setSelectedCountry] = useState('Czech Republic');
 
@@ -331,6 +333,11 @@ const Content = () => {
     "Yapese",
     "Palauan",
   ];
+  const [value, setValue] = useState(0);
+
+  const handleChange = (e) => {
+    setValue(parseFloat(e.target.value));
+  };
 
 
   const countries = [
@@ -356,8 +363,8 @@ const Content = () => {
   };
   return (
     <div>
-      <div className="max-w-3xl mx-auto md:py-20 px-10">
-        <div className="mb-6">
+      <div >
+        <div >
           <div className='bg-white'>
             <div
               className={`flex justify-between items-center cursor-pointer p-3 font-light ${openIndex === 0 ? 'bg-min/10 shadow-md' : 'border-y'
@@ -401,30 +408,68 @@ const Content = () => {
                   </p>
                 </div>
 
-{/*  */}
-  <div className="mb-1">
+                {/*  */}
+                <div className="mb-1">
                   <label className="form-label"><b>Target Country
-</b> </label>
+                  </b> </label>
                   <div className="w-full">
-                   
+
                     <select
                       className="border rounded-md py-3 px-4 bg-slate-50 w-full my-4 focus:outline-blue-500"
                       value={openIndexLang}
                       onChange={handleToggleLang}
                     >
-                    {languages.map((language, index) => (
+                      {languages.map((language, index) => (
                         <option key={index} value={language}>
                           {language}
                         </option>
                       ))}
                     </select>
                   </div>
-                  <p>Each option provides a different way to generate content.
-                  </p>
+                  <p>Generate location-specific content. ,<br />
+                    Important for features like Connect to Web and External Linking.</p>
                 </div>
 
-{/*  */}
+                {/*  */}
+                <label className="form-label">Creativity</label>
 
+                <input
+                  type="range"
+                  min="-1"
+                  max="1"
+                  step="0.5"
+                  value={value}
+                  onChange={handleChange}
+                  className="custom-range w-100"
+                  id="customRange1"
+                />
+                <div className="value">{value}</div>
+                {/*  */}
+                <div className="d-flex justify-content-between">
+                  <p className="chakra-text css-1rr4qq7">Correct/Factual</p>
+                  <p className="chakra-text css-0">Creative/Original</p>
+                </div>
+                {/*  */}
+                <div className="form-group"> {/* Bootstrap class for form group */}
+                  <label htmlFor="tone">Tone of Voice</label> {/* Bootstrap uses htmlFor instead of for */}
+                  <input
+                    type="text"
+                    className="form-control w-100"
+                    id="tone"
+                    name="tone"
+                    maxLength="80"
+                    placeholder="neutral"
+                    aria-describedby="toneHelpText"
+                    value=""
+                  />
+                  <small id="toneHelpText" className="form-text text-muted"> 
+                    Examples: <code>funny</code>, <code>informal</code>, <code>academic</code>
+                  </small>
+                </div>
+                <PointOfview />
+                <Instraction />
+                <Keyword/>
+                {/*  */}
               </>
             )}
           </div>

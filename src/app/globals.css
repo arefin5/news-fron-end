@@ -97,3 +97,71 @@ textarea{
   color: var(--chakra-colors-purple-600);
   background: var(--chakra-colors-transparent);
 }
+.value {
+  text-align: center;
+  margin-top: 10px;
+}
+.css-1igwmid {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.css-1rr4qq7{
+  flex: 1 1 0%;
+}
+
+.css-icqrzr {
+  display: inline-flex;
+  vertical-align: top;
+  -webkit-box-align: center;
+  align-items: center;
+  max-width: 100%;
+  font-weight: var(--chakra-fontWeights-medium);
+  line-height: 1.2;
+  outline: transparent solid 2px;
+  outline-offset: 2px;
+  --tag-color: var(--badge-color);
+  --tag-bg: var(--badge-bg);
+  --tag-shadow: var(--badge-shadow);
+  color: var(--tag-color);
+  background: var(--tag-bg);
+  box-shadow: var(--tag-shadow);
+  border-radius: var(--chakra-radii-md);
+  min-height: var(--tag-min-height);
+  min-width: var(--tag-min-width);
+  font-size: var(--tag-font-size);
+  padding-inline-start: var(--tag-padding-inline);
+  padding-inline-end: var(--tag-padding-inline);
+  --tag-min-height: var(--chakra-sizes-6);
+  --tag-min-width: var(--chakra-sizes-6);
+  --tag-font-size: var(--chakra-fontSizes-sm);
+  --tag-padding-inline: var(--chakra-space-2);
+  --badge-bg: var(--chakra-colors-orange-100);
+  --badge-color: var(--chakra-colors-orange-800);
+}
+
+css-1t7rcca:last-of-type {
+  border-bottom-width: 1px;
+}
+
+.css-1t7rcca {
+  overflow-anchor: none;
+  border: var(--chakra-borders-none);
+}
+
+*, ::before, ::after {
+  border-color: var(--chakra-colors-chakra-border-color);
+}
+
+:where(*) {
+  border-width: 0px;
+  border-style: solid;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+}
+div {
+  display: block;
+  unicode-bidi: isolate;
+}

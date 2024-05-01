@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { ChakraProvider, Icon } from "@chakra-ui/react";
 import { CheckCircleIcon } from "@chakra-ui/icons";
-
+import Content from "./Content";
+import Knowledge from "./Knowledge"
 const Base = () => {
   const [openIndex, setOpenIndex] = useState(-1);
   const [openIndext, setOpenIndext] = useState(-1);
@@ -205,7 +206,9 @@ const Base = () => {
             )}
           </div>
           {/*  */}
-
+<Content/>
+          {/*  */}
+          <Knowledge />
           {/*  */}
         </div>
       </div>
