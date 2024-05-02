@@ -227,6 +227,8 @@ import Knowledge from "./Knowledge"
 import Formating from "./Formating";
 import Structure from "./Structure";
 import InternalLinking from "./InternalLinking";
+import VideosFrom from "./VideosFrom";
+import ImagesFrom from "./ImagesFroms";
 const Base = () => {
   const [openIndex, setOpenIndex] = useState(-1);
   const [openIndext, setOpenIndext] = useState(-1);
@@ -253,7 +255,7 @@ const Base = () => {
   };
   return (
     <div>
-      <div className="max-w-3xl mx-auto md:py-20 px-10">
+      <div className="">
         <>
           {/*  */}
           <div className='bg-white'>
@@ -381,6 +383,8 @@ const Base = () => {
           <Formating />
           <Structure/>
           <InternalLinking />
+          <ImagesFrom />
+          <VideosFrom />
         </>
       </div>
     </div>

@@ -56,7 +56,7 @@ const Sidebar= () => {
     setOpenSubmenuId((prevId) => (prevId === id ? null : id));
   };
 
-  const [popupSide, setPopupSide] = useState<'left' | 'right' | null>(null);
+  const [popupSide, setPopupSide] = useState(null);
 
   const togglePopup = (side) => {
     setPopupSide(popupSide === side ? null : side);

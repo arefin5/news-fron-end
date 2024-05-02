@@ -62,13 +62,14 @@
 .bg-sl {
     
   background-color: #6F2EFF;
-  background-color: var(--chakra-colors-purple-400);
+  /* background-color: var(--chakra-colors-purple-400); */
   width: var(--chakra-sizes-3);
   height: var(--chakra-sizes-3);
   border-radius: var(--chakra-radii-sm);
   display: inline-block; 
   margin: 0px 9px;
 }
+
 textarea{
   border-width: 1px;
     border-style: solid;
@@ -195,4 +196,54 @@ div {
   border-image: initial;
   border-color: inherit;
   background: var(--chakra-colors-white);
+}
+.main-desh{
+ margin: 0px auto;
+}
+.button-tops {
+  padding: 15px 20px;
+}
+.pre-buttons {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  margin-right: 10px;
+  border-radius: 4px;
+  padding: 1px 10px;
+}
+
+
+
+.css-1147eql {
+  display: inline-flex;
+  vertical-align: top;
+  -webkit-box-align: center;
+  align-items: center;
+  max-width: 100%;
+  font-weight: var(--chakra-fontWeights-medium);
+  line-height: 1.2;
+  outline-offset: 2px;
+  --tag-color: var(--badge-color);
+  --tag-bg: var(--badge-bg);
+  --tag-shadow: var(--badge-shadow);
+ 
+  box-shadow: var(--tag-shadow);
+  min-height: var(--tag-min-height);
+  min-width: var(--tag-min-width);
+  font-size: var(--tag-font-size);
+  padding-inline-start: var(--tag-padding-inline);
+  padding-inline-end: var(--tag-padding-inline);
+  --tag-min-height: var(--chakra-sizes-6);
+  --tag-min-width: var(--chakra-sizes-6);
+  --tag-font-size: var(--chakra-fontSizes-sm);
+  --tag-padding-inline: var(--chakra-space-2);
+  --badge-bg: var(--chakra-colors-purple-100);
+  --badge-color: var(--chakra-colors-purple-800);
+  background-color: var(--chakra-colors-purple-500);
+  color: var(--chakra-colors-white);
+  outline: transparent solid 2px;
+  border-radius: var(--chakra-radii-md);
+}
+.config_h{
+  padding:0px 4px;
 }

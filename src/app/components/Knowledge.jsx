@@ -53,7 +53,9 @@ const Knowledge = () => {
                             We'll search on Google for similar topics to generate up-to-date content.
 
                         </span>
-                    <div class="chakra-stack css-1igwmid"><p class="chakra-text css-1rr4qq7">Knowledge Base</p><a href="/dashboard/customization/knowledge/create">
+                    <div class="chakra-stack css-1igwmid">
+                    <p class="chakra-text css-1rr4qq7">Knowledge Base</p>
+                    <a href="/dashboard/customization/knowledge/create">
                         <button type="button" class="chakra-button css-1csoi55">+ Create Knowledge Base</button></a></div>
                     {/*  */}
                     <select
